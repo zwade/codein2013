@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<title>Apertium</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" rel="Stylesheet" href="jsDw/style.css" media="screen" /> 
+		<link type="text/css" rel="Stylesheet" href="jsDw/bootstrap.css" media="screen" /> 
+		<link type="text/css" rel="Stylesheet" href="jsDw/dropDown.css" media="screen" /> 
+	    <script type="text/javascript" src="jsDw/jquery-1.8.3.min.js"></script>
+	    	
+		<!--My code-->
+		<link type="text/css" rel="Stylesheet" href="JSpelling.css" media="screen" /> 
+	    	<script type="text/javascript" src="JSpelling.js"></script>
+		
+		<!--
+		<script type="text/javascript" src="http://api.apertium.org/JSLibrary.jsp"></script>
+	    -->
+		
+		<script type="text/javascript" src="jsDw/scriptness.js"></script>
+		<script type="text/javascript" src="jsDw/cld-min.js"></script>
+	</head>
+	<body>
+		<img src="Apertium_logo_225x48.png" alt="" />
+		<div id="dropDown">
+			<div id="changemode" class='itemSelect'>Toggle</div>
+			<div class="itemSelect translate" id="selectFrom">  <span>From: <em></em>  </span> </div>
+			<div id="swapLanguages" class='translate'> <span> Swap </span> </div>
+			<div class="itemSelect translate" id="selectTo" > <span>To: <em></em>  </span> </div>		
+			<div id="dropDownSub">
+				<table>
+					<tr>
+						<td>
+							<div class="column-group"id="column-group-1">
+							</div>
+						</td>
+						
+						<td>
+							<div class="column-group" id="column-group-2">
+							</div>
+						</td>
+						
+						<td>
+							<div class="column-group" id="column-group-3">
+							</div>
+						</td>
+						<td>
+							<div class="column-group" id="column-group-4">
+							</div>
+						</td>
+						<td>
+							<div class="column-group" id="column-group-5">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="wrap">
+
+		<!--added this, this will be necessary for anyone wishing to use this code-->
+		
+		<div id="spellCheckTitle" style="display:none" class="spellcheck">Spell Checker</div>
+
+		<div id="spellCheckInterface" style="display:none" class='spellcheck'>
+			<div id='spellCheckToggle'>
+			</div>
+			<div id='spellCheckHeader'><span></span></div>
+			<button id='next'>&gt</button>
+			<button id='prev'>&lt</button>
+			<div id='spellCheckOpt'></div>
+		</div>
+		<!--end above-->
+
+		<form id="inputBox" method="POST">
+			<!-- Optional -->
+			<div id="spellCheckHighlight" class='spellcheck'></div>
+			<!--          -->
+			<!--added class for this-->
+			<textarea id="textAreaId"  class='spellTextArea' ></textarea>
+			<input type="submit" id="translate-btn" class="translate btn btn-large btn-warning translate_btn" value="Translate" />
+		</form>
+		
+		<div id="translationTest" class="translate">
+			<span></span>
+		</div>
+		</div>
+		
+		
+	</body>
+</html>
