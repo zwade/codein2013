@@ -121,11 +121,13 @@ SCR.toggleSpellCheck = function(e) {
 		
 }
 SCR.populateSpellCheck = function(opt,index) {
-	if (!opt[index]) {
+	if (opt.length == 0) {
 		$("#spellCheckHeader span").text("")
 		$("#spellCheckOpt").html("");
 		$("#spellCheckToggle").html("<span>No Spelling Errors</span>")
 		return;
+	} if (index>=opt.length) {
+		index = opt.length-1
 	}
 	var words = SCR.STA.val().split(" ");
 	$("#spellCheckHeader span").text(words[opt[index][0]]);
