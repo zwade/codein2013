@@ -9,9 +9,11 @@ SCR.loadModule = function() {
 
 	SCR.STA.attr("spellcheck","false");
 
+	SCR.speeling = [];
+
 	SCR.page = 0;
 	
-	$("#spellCheckToggle").click(SCR.toggleSpellCheck);
+	//$("#spellCheckToggle").click(SCR.toggleSpellCheck);
 	SCR.STA.keyup(SCR.spellTextEvent);
 
 	SCR.STA.focus(SCR.staFocus);
@@ -46,6 +48,8 @@ SCR.toggleActive = function(arg) {
 	if (typeof arg != "object") {
 		SCR.active = arg;
 	} else {
+		SCR.spellTextEvent();
+		SCR.populateSpellCheck(SCR.speeling,SCR.page);
 		var index = SCR.modes.indexOf(SCR.active)+1;
 		//console.log(index);
 		if (index>=SCR.modes.length) {
@@ -120,6 +124,7 @@ SCR.populateSpellCheck = function(opt,index) {
 	if (!opt[index]) {
 		$("#spellCheckHeader span").text("")
 		$("#spellCheckOpt").html("");
+		$("#spellCheckToggle").html("<span>No Spelling Errors</span>")
 		return;
 	}
 	var words = SCR.STA.val().split(" ");
@@ -130,6 +135,13 @@ SCR.populateSpellCheck = function(opt,index) {
 	}
 	$("#spellCheckOpt").html(spellCheckInnerHTML);
 	SCR.bindSpellCheckOpt()
+	if (opt.length>1) {
+		$("#spellCheckToggle").html("<span>"+opt.length+" Spelling Errors</span>")
+	} else if (opt.length==1) {
+		$("#spellCheckToggle").html("<span>"+opt.length+" Spelling Error</span>")
+	}
+
+
 	var highlight = $("#spellCheckHighlight")
 	if (highlight) {
 		//console.log(opt)
@@ -183,7 +195,7 @@ SCR.bindSpellCheckOpt = function() {
 
 //while Lucas.isDoing(usaco) == true:
 SCR.dummySpelling = function(WC) {
-	var dummyWords = ["hello", "world", "how", "are", "you"];
+	var dummyWords = ["hello", "world", "how", "are", "you", 'pizza','artichokical','blah','dah','tah', 'undefined'];
 	var wordList = WC.split(" ");
 	var corrections = [];
 	for (i in wordList) {
